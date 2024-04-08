@@ -7,6 +7,28 @@ export default function Home() {
   const [files, setFiles] = useState([]);
   const [email, setEmail] = useState("");
 
+  const upload_file = async () => {
+    try {
+      var formdata = new FormData();
+
+      for (var i = 0; i < files.length; i++) {
+        formdata.append("files", files[i]);
+      }
+
+      const response = await fetch("http://127.0.0.1:8000/handle/", {
+        method: "POST",
+        body: formdata,
+      });
+
+      const result = await response.json();
+      console.log(result);
+
+      // Handle response accordingly (e.g., update UI, redirect, etc.)
+    } catch (error) {
+      console.error("Error uploading files:", error);
+    }
+  };
+  
   const fileSize = (fileSize) => {
     if (fileSize >= 1073741824) {
       return (
@@ -103,6 +125,7 @@ export default function Home() {
 
       <div className="">
         <button
+          onClick={upload_file}
           className={`${
             !(files.length && email) ? "disabled-btn" : "primary-btn"
           }`}

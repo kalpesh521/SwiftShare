@@ -7,8 +7,7 @@ import os
 class Folder(models.Model):
     uid= models.UUIDField(primary_key=True,editable=False,default=uuid.uuid4)
     created_at=models.DateField(auto_now=True)
-    def __str__(self):
-        return self.uid
+     
 # This function generates the upload path for a file based on the associated folder's uid.
 
 def get_upload_path(instance,filename):
@@ -22,6 +21,4 @@ class Files(models.Model):
     file= models.FileField(upload_to=get_upload_path)
     created_at=models.DateField(auto_now=True)
     
-    def __str__(self):
-        return self.folder
         
