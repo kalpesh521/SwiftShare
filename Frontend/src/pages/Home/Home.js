@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { FaCloudUploadAlt, FaLink } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./Home.css";
 
 export default function Home() {
   const [files, setFiles] = useState([]);
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   const upload_file = async () => {
     try {
@@ -23,12 +26,25 @@ export default function Home() {
       const result = await response.json();
       console.log(result);
 
-      // Handle response accordingly (e.g., update UI, redirect, etc.)
+      const url = `http://127.0.0.1:8000/download/${result.data.folder}`;
+      // const url = `http://127.0.0.1:8000/download/${result.data.folder}`;
+      console.log(url);
+
+      toast.success("Files uploaded successfully!!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      navigate("/getlink", { state: { url: url } });
     } catch (error) {
       console.error("Error uploading files:", error);
     }
   };
-  
+
   const fileSize = (fileSize) => {
     if (fileSize >= 1073741824) {
       return (
