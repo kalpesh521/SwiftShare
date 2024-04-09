@@ -1,5 +1,5 @@
 .getlink-container {
-  width: 400px;
+  width: 500px;
   align-self: center;
   height: fit-content;
   display: flex;
@@ -9,23 +9,48 @@
   background-color: white;
   padding: 5%;
   border-radius: 5px;
+  margin-top: 100px;
+  margin-bottom: 30px;
 }
 
+ #subtittle{
+   margin: 2px;
+ }
 .link-container {
-  width: 90%;
+  width: 95%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 10px;
+  border: 2px solid lightgray;
+  border-style: dashed;
+  border-radius: 7px;
+  padding-inline: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  background-color: rgba(255, 255, 255, 0.9);
+  margin-top: 20px;
 }
 
-.link-container a {
-  height: 35px;
-  width: 90%;
-  background-color: lightgray;
+  #link{
+  height: 55px;
+  width: 100%;
+  background-color: rgb(240, 240, 240);
   text-decoration: none;
   border-radius: 5px;
   padding-top: 5px;
   padding-left: 10px;
+}
+.icon-container {
+  display: flex;
+  align-items: center;
+   gap: 15px;
+ }
+
+.icon-container .icon {
+  border: 2px solid dodgerblue;
+   border-radius: 20%;
+   padding: 5px;
+  
 }

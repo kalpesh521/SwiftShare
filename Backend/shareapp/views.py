@@ -7,7 +7,7 @@ def home(request):
     return render(request,'home.html')
 
 def download(request,uid):
-    return render(request,'download.html',context={'uid':uid})
+    return render(request,'download-file.html',context={'uid':uid})
 
 
 # class HandleFileUpload(APIView):

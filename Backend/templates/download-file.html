@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download</title>
+  {% comment %} <link rel="stylesheet" href="styles.css"> {% endcomment %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <style>
+    body {
+        scroll-behavior: smooth;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #161e32;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        overflow: hidden;
+        padding-top: 5%;
+      }
+      
+    .download-container {
+        width: 400px;
+        align-self: center;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        padding: 5%;
+        border-radius: 5px;
+      }
+      
+      .download-file-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10%;
+        height: 25px;
+        width: 90%;
+        margin-block: 20px;
+        border: 2px solid lightgray;
+        border-style: dashed;
+        border-radius: 7px;
+        padding: 5%;
+        margin-bottom: 30px;
+        background-color: rgba(255, 255, 255, 0.9);
+
+      }
+      
+      .download-file-container p {
+        font-size: 13px;
+      }
+      
+      .download-btn {
+        outline: none;
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        color: #ffffff;
+        background-color: #1d4ed8;
+        width: 100%;
+        height: 40px;
+        cursor: pointer;
+        border: none;
+      }
+      
+  </style>
+
+</head>
+<body>
+  <div class="download-container">
+    <p style= "font-size: 20px; font-weight: 600">File is ready!</p>
+    <div class="download-file-container">
+      <p style= width: "80%", height: "50px">
+        <i class="fas fa-clock clock-icon"></i>
+        Expires on April 30 , 2024 10.02.00 PM GMT+5.30
+      </p>
+      <p style= width: "20%"></p>
+    </div>
+    <button class="download-btn">     <i class="fa fa-download"></i>   
+        <a href="/media/zip/{{uid}}.zip"  style="text-decoration: none;color: white;font-weight:600">DOWNLOAD DATA PACKAGE</a>
+    </button>
+  </div>
+
+  {% comment %} <script src="script.js"></script> {% endcomment %}
+  <script>
+    {% comment %} document.addEventListener("DOMContentLoaded", function () {
+        const file = {
+          lastModified: 1711390184136,
+          lastModifiedDate: "Mon Mar 25 2024 23:39:44 GMT+0530 (India Standard Time)",
+          name: "Unit  2 question bank with solution.pdf",
+          size: 130407,
+          type: "application/pdf",
+          webkitRelativePath: "",
+        };
+      
+        function fileSize(size) {
+          if (size >= 1073741824) {
+            return `${(size / 1073741824).toFixed(2)} GB`;
+          } else if (size >= 52428800) {
+            return `${(size / 1048576).toFixed(2)} MB`;
+          } else if (size >= 1024) {
+            return `${(size / 1024).toFixed(2)} KB`;
+          }
+        }
+      
+        const downloadFileContainer = document.querySelector(".download-file-container");
+        const downloadFileName = downloadFileContainer.querySelector("p:first-child");
+        const downloadFileSize = downloadFileContainer.querySelector("p:last-child");
+        
+        downloadFileName.textContent = file.name;
+        downloadFileSize.textContent = fileSize(file.size);
+      });
+       {% endcomment %}
+  </script>
+</body>
+</html>
