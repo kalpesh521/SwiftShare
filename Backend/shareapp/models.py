@@ -13,8 +13,7 @@ class Folder(models.Model):
 def get_upload_path(instance,filename):
     return os.path.join(str(instance.folder.uid),filename) 
 
-print(get_upload_path)
-
+ 
 # This class represents a File model with a foreign key relationship to a Folder, a file field, and a creation date.
 class Files(models.Model):
     folder=models.ForeignKey(Folder,on_delete=models.CASCADE)

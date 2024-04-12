@@ -1,18 +1,24 @@
 body {
   scroll-behavior: smooth;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
+  font-family: 'Poppins';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #161e32;
-  display: flex;
+  /* overflow: hidden; */
+
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  overflow: hidden;
-  padding-top: 5%;
+  padding-top: 5%; */
+}
+@font-face {
+  font-family: 'Poppins';
+  src: local('Poppins'), url(./fonts/Poppins-Regular.ttf) format('truetype');
 }
 
 .background {
@@ -34,37 +40,37 @@ body {
   align-items: center;
 }
 
-.primary-btn{
+.primary-btn {
   outline: none;
-  display: flex; 
-  flex-direction: row; 
-  gap: 0.5rem; 
-  justify-content: center; 
-  align-items: center; 
-  border-radius: 0.25rem; 
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.25rem;
   font-size: 0.875rem;
-  line-height: 1.25rem; 
-  color: #ffffff; 
-  background-color: #1D4ED8; 
+  line-height: 1.25rem;
+  color: #ffffff;
+  background-color: #1D4ED8;
   width: 150px;
   height: 40px;
   cursor: pointer;
   border: none;
 }
 
-.disabled-btn{
+.disabled-btn {
   outline: none;
-  display: flex; 
-  flex-direction: row; 
-  gap: 0.5rem; 
-  justify-content: center; 
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  justify-content: center;
   align-items: center;
   border: none;
-  border-radius: 0.25rem; 
+  border-radius: 0.25rem;
   font-size: 0.875rem;
-  line-height: 1.25rem; 
-  color: #ffffff; 
-  background-color: #5c5c5c; 
+  line-height: 1.25rem;
+  color: #ffffff;
+  background-color: #5c5c5c;
   width: 150px;
   height: 40px;
   cursor: not-allowed;

@@ -27,7 +27,6 @@ export default function Home() {
       console.log(result);
 
       const url = `http://127.0.0.1:8000/download/${result.data.folder}`;
-      // const url = `http://127.0.0.1:8000/download/${result.data.folder}`;
       console.log(url);
 
       toast.success("Files uploaded successfully!!", {
@@ -94,9 +93,9 @@ export default function Home() {
 
       <div className="display-files">
         <div className="display-files-header">
-          <p style={{ width: "150px", textAlign: "center" }}>Name</p>
+          <p style={{ width: "90px", textAlign: "center" }}>Name</p>
           <p>Size</p>
-          <p>Delete</p>
+          <p style={{ width: "70px", textAlign: "center" }}>Delete</p>
         </div>
         <div className="display-files-content">
           {files.length !== 0 &&
@@ -105,9 +104,9 @@ export default function Home() {
                 <div className="file-item">
                   <p
                     style={{
-                      fontSize: "13px",
-                      width: "200px",
-                      height: "35px",
+                      fontSize: "14px",
+                      width: "150px",
+                      height: "20px",
                       overflow: "hidden",
                     }}
                   >
@@ -129,7 +128,9 @@ export default function Home() {
       </div>
 
       <div className="recipients-email-container">
-        <p style={{ fontSize: "14px" }}>Enter recipient's email: </p>
+        <p style={{ fontWeight: 600, fontSize: "14px" }}>
+          Enter Recipient's Email :{" "}
+        </p>
         <input
           className="recipients-email"
           value={email}
