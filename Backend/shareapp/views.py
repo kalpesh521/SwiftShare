@@ -6,32 +6,25 @@ from rest_framework import viewsets, status
 import pyrebase
 import os 
   
-# config = {
-#   "apiKey": "AIzaSyBje9AUTTUm31iJ--6zcBbf2TLKpMUr440",
-#   "authDomain": "transfer-link-4991e.firebaseapp.com",
-#   "projectId": "transfer-link-4991e",
-#   "storageBucket": "transfer-link-4991e.appspot.com",
-#   "messagingSenderId": "758175853097",
-#   "appId": "1:758175853097:web:03ea706bb34f1c27ca4a38",
-# }
 
 # app = initializeApp(firebaseConfig);
-import firebase_admin
-from firebase_admin import credentials ,firestore
+# import firebase_admin
+# from firebase_admin import credentials ,firestore
 
-cred = credentials.Certificate(r"D:\Big Data\ShareLink\Backend\firebase-adminsdk.json")
-firebase_admin.initialize_app(cred)
+# cred = credentials.Certificate(r"D:\Big Data\ShareLink\Backend\firebase-adminsdk.json")
+# firebase_admin.initialize_app(cred)
 
-db =firestore.client() 
-data={
+# db =firestore.client() 
+# data={
     
-    'name':'Kalpesh',
-    'email':'kalpeshpawar7875@gmail.com',
-}
-doc_ref =db.collection("info").document()
-doc_ref.set(data)
+#     'name':'Kalpesh',
+#     'email':'kalpeshpawar7875@gmail.com',
+# }
+# doc_ref =db.collection("info").document()
+# doc_ref.set(data)
 
-print('Document ID :', doc_ref.id)
+# print('Document ID :', doc_ref.id)
+
 def home(request):
     return render(request,'home.html')
 
