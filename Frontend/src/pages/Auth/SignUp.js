@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import basestyle from "./Base.module.css";
 import registerstyle from "./SignUp.module.css";
-
+import { FaTimes } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
 const Register = () => {
   const navigate = useNavigate();
@@ -71,6 +71,10 @@ const Register = () => {
   return (
     <>
       <div className={registerstyle.register}>
+      <FaTimes  
+          className={basestyle.icon}
+          onClick={() => navigate("/")}
+        />
         <form>
           <h1 style={{ marginTop: -10, marginBottom: 30 }}>CREATE ACCOUNT</h1>
           <input
@@ -123,7 +127,7 @@ const Register = () => {
           </NavLink>{" "}
           <NavLink
             to="/signin"
-            style={{ textDecoration: "none", color: "blue", fontWeight: 600 }}
+            style={{ textDecoration: "none", color: "#6834d4", fontWeight: 600 }}
           >
             Login
           </NavLink>

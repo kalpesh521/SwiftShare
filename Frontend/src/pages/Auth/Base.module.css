@@ -1,5 +1,5 @@
 .button_common {
-    background-color: #1D4ED8;
+    background-color: #6834d4;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -12,6 +12,19 @@
     font-family: 'Poppins';
 
 
+}
+
+.icon {
+    position: fixed;
+    top: 20px;
+    /* Adjust as needed */
+    right: 20px;
+    /* Adjust as needed */
+    cursor: pointer;
+    color: red;
+    /* Adjust color as needed */
+    font-size: 24px;
+    /* Adjust size as needed */
 }
 
 .error {

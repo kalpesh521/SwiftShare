@@ -1,7 +1,13 @@
-import arrow_btn from "../../assets/arrow_btn.png";
+import { useNavigate } from "react-router";
+import arrow_btn from "../../assets/images/arrow.png";
 import "./Hero.css";
 
-const hero = ({ heroData, heroCount, setHeroCount }) => {
+export default function Hero({ heroData, heroCount, setHeroCount }) {
+  const navigate = useNavigate();
+   const redirectToHome = () => {
+    navigate("/home");
+  };
+
   return (
     <div className="hero">
       <div className="hero-text">
@@ -9,8 +15,8 @@ const hero = ({ heroData, heroCount, setHeroCount }) => {
         <p>{heroData.text2}</p>
       </div>
       <div>
-        <li className="hero-btn">
-         Get Started
+        <li className="hero-btn"  onClick={redirectToHome}>
+          Get Started
           <img src={arrow_btn} alt="" className="hero-icon" />
         </li>
       </div>
@@ -33,5 +39,4 @@ const hero = ({ heroData, heroCount, setHeroCount }) => {
       </div>
     </div>
   );
-};
-export default hero;
+}

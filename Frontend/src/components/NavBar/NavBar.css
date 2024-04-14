@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     color: white;
-    margin: 15px 45px;
+    margin: 15px 55px;
 
 }
 
@@ -31,16 +31,18 @@
 .nav-signin {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 5px;
     border-radius: 50px;
     color: black;
-    font-weight: 600;
+    font-weight: 700;
     background-color: white;
     padding: 6px 15px;
     transition: all 0.3s ease;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
     cursor: pointer;
     width: fit-content;
+    font-size: 16px;
+    color: #6834d4;
 
 }
 
@@ -51,12 +53,13 @@
 }
 
 .nav-signin-logo {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
 }
 
-#about:hover {
-    color: orange;
+#menu:hover {
+    color: #fcbc28;
+    cursor: pointer;
 }
 
 .nav-left {
@@ -64,4 +67,3 @@
     gap: 10px;
     align-items: center;
 }
-

@@ -58,7 +58,7 @@ const Login = ({ setUserState }) => {
     <div className={loginstyle.login}>
       <form>
         <h1 style={{ marginTop: -10, marginBottom: 30 }}>Welcome Back</h1>
-        <p>Please log</p>
+        <p>Please Sign In</p>
         <input
           type="email"
           name="email"
@@ -92,7 +92,7 @@ const Login = ({ setUserState }) => {
         </NavLink>{" "}
         <NavLink
           to="/signup"
-          style={{ textDecoration: "none", color: "blue", fontWeight: 600 }}
+          style={{ textDecoration: "none", color: "#6834d4", fontWeight: 600 }}
         >
           Register Now
         </NavLink>

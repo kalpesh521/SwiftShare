@@ -1,101 +1,115 @@
-.home-container {
-  width: 400px;
-  align-self: center;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  padding: 5%;
-  border-radius: 5px;
-}
+ body {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   padding-top: 5%;
+   overflow: hidden;
 
-.upload-container {
-  width: 90%;
-  height: 60px;
-  border: 1px solid gray;
-  border-style: dashed;
-  border-radius: 7px;
-  padding: 2%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.display-files {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.display-files-header {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-block: 20px;
-  font-size: 15px;
-  font-weight: 600;
-
-}
-
-.display-files-content {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 150px;
-  overflow-y: scroll;
-  border: 1px solid lightgray;
-  border-radius: 7px;
-  margin-top: -25px;
-
-}
-
-.file-item {
-  width: 90%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
  }
 
-.file-item p {
-  font-size: 13px;
-}
+ .home-container {
+   width: 500px;
+   align-self: center;
+   height: fit-content;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   background-color: white;
+   padding: 5%;
+   border-radius: 5px;
+ }
 
-.delete-button {
-  background: none;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  margin-left: 40px;
-  margin-bottom: -7px;
-}
+ .upload-container {
+   width: 95%;
+   height: 60px;
+   border: 1px solid gray;
+   border-style: dashed;
+   border-radius: 7px;
+   padding: 2%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+ }
 
-.recipients-email-container {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-block: 10px;
-}
+ .display-files {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+ }
 
-.recipients-email {
-  padding-inline: 10px;
-  font-size: 14px;
-  border-radius: 0.25rem;
-  border-color: #9ca3af;
-  outline-style: none;
-  width: 95%;
-  color: #374151;
-  background-color: #f0f3f7;
-  border: 1px solid gray;
-  height: 35px;
-  color: 13px;
-}
+ .display-files-header {
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   margin-block: 20px;
+   font-size: 15px;
+   font-weight: 600;
+   margin-bottom: 15px;
+ }
+
+ .display-files-content {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   height: 150px;
+   overflow-y: scroll;
+   border: 1px solid lightgray;
+   border-radius: 7px;
+   margin-top: -25px;
+
+ }
+
+ .file-item {
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+ }
+
+ .file-item p {
+   font-size: 13px;
+   margin-left: 30px;
+ }
+
+ .delete-button {
+   background: none;
+   outline: none;
+   border: none;
+   cursor: pointer;
+   margin-left: 60px;
+   margin-bottom: -7px;
+ }
+
+ .recipients-email-container {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: flex-start;
+   margin-block: 20px;
+ }
+
+ .recipients-email {
+   padding-inline: 10px;
+   font-size: 14px;
+   border-radius: 0.25rem;
+   border-color: #9ca3af;
+   outline-style: none;
+   width: 95%;
+   color: #374151;
+   background-color: #f0f3f7;
+   border: 1px solid gray;
+   height: 35px;
+   color: 13px;
+ }
+
+ 

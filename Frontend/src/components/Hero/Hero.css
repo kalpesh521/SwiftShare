@@ -1,31 +1,20 @@
 .hero {
-    margin: 0px 120px;
-    margin-top: 270px;
+    margin: 0px 90px;
+    margin-top: 230px;
 }
 
 .hero-text {
     color: white;
-    font-size: 60px;
+    font-size: 55px;
     font-weight: 600;
     line-height: 20px;
 }
 
 .hero-btn {
-    /* display: flex;
-    align-items: center;
-    gap: 10px;
-    width: fit-content;
-    margin-top: 50px;
-    padding: 0px 10px;
-    padding-left: 30px;
-    border-radius: 50px;
-    background-color: white;
-    cursor: pointer; */
     display: flex;
     align-items: center;
     gap: 12px;
     border-radius: 50px;
-    color: black;
     font-weight: 600;
     background-color: white;
     padding: 6px 15px;
@@ -33,9 +22,10 @@
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
     cursor: pointer;
     width: fit-content;
-    font-weight: 600;
-    font-size: 15px;
-
+    font-weight: 700;
+    font-size: 16px;
+    color: #6834d4;
+    margin-top: 60px;
 }
 
 .hero-btn:hover {
@@ -50,7 +40,7 @@
 }
 
 .hero-dot-play {
-    margin-top: 30px;
+    margin: 40px -30px;
     justify-content: space-between;
     display: flex;
 }
@@ -71,5 +61,5 @@
 }
 
 .hero-dot.orange {
-    background-color: orange;
+    background-color: #fcbc28;
 }

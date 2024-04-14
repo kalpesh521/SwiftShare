@@ -39,9 +39,9 @@ export default function Download() {
         <p style={{width: "80%", height: "50px"}}>{file.name}</p>
         <p style={{width: "20%"}}>{fileSize(file.size)}</p>
       </div>
-      <button className="download-btn">
+      <button className="primary-btn">
         <FaDownload size={18} color="white" />
-        Download data
+        Download   
       </button>
     </div>
   );

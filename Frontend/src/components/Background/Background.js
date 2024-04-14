@@ -1,8 +1,8 @@
+import image1 from "../../assets/images/slide1.0.jpg";
+import image2 from "../../assets/images/slide2.0.jpg";
+import image3 from "../../assets/images/slide3.jpg";
 import "./Background.css";
-import image1 from "../../assets/image1.png";
-import image2 from "../../assets/image2.png";
-import image3 from "../../assets/image3.png";
-const Background = ({heroCount}) => {
+const Background = ({ heroCount }) => {
   if (heroCount === 0) {
     return <img src={image1} className="background" alt="" />;
   }

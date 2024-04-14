@@ -93,8 +93,8 @@ export default function Home() {
 
       <div className="display-files">
         <div className="display-files-header">
-          <p style={{ width: "90px", textAlign: "center" }}>Name</p>
-          <p>Size</p>
+          <p style={{ width: "120px", textAlign: "center" }}>Name</p>
+          <p style={{ marginLeft: "80px", textAlign: "center" }}>Size</p>
           <p style={{ width: "70px", textAlign: "center" }}>Delete</p>
         </div>
         <div className="display-files-content">
@@ -105,7 +105,7 @@ export default function Home() {
                   <p
                     style={{
                       fontSize: "14px",
-                      width: "150px",
+                      width: "230px",
                       height: "20px",
                       overflow: "hidden",
                     }}
@@ -140,11 +140,11 @@ export default function Home() {
         />
       </div>
 
-      <div className="">
+      <div>
         <button
           onClick={upload_file}
           className={`${
-            !(files.length && email) ? "disabled-btn" : "primary-btn"
+            !(files.length && email) ? "disabled-btn  " : "primary-btn  "
           }`}
         >
           <FaLink size={18} />
