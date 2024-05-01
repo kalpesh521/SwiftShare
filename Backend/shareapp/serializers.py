@@ -69,3 +69,10 @@ class FileListSerializer(serializers.Serializer):
         return {'files' : {} , 'folder' : str(folder.uid)}
     
     
+    
+class ContactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Contact
+        fields=("id","name","email","subject","message")
+        
+        

@@ -122,3 +122,8 @@ class  HandleFileUpload(viewsets.ModelViewSet):
 #                     })
 #         except Exception as e : 
 #               print(e) 
+
+
+class ContactView(viewsets.ModelViewSet):
+    serializer_class = ContactSerializer
+    queryset = Contact.objects.all()

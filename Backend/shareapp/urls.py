@@ -14,6 +14,7 @@ from shareapp.views import *
 
 router = DefaultRouter()
 router.register(r'handle', HandleFileUpload, basename='files')
+router.register(r'contact', ContactView, basename='contact')
 
 urlpatterns = [
     path('', include(router.urls)),

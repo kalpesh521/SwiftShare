@@ -58,7 +58,7 @@ const Contact = () => {
     try {
       const response = await axios.post("http://127.0.0.1:8000/contact/", user);
       console.log("Success!", response.data);
-      toast.success("Registration successful!", {
+      toast.success("Submitted successfully!", {
         position: "top-right",
         autoClose: 3000, // Adjust as needed
         hideProgressBar: false,
