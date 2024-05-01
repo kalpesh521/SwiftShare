@@ -1,8 +1,7 @@
 import { React, useEffect, useState } from "react";
 import Background from "../../components/Background/Background";
 import Hero from "../../components/Hero/Hero";
-import NavBar from "../../components/NavBar/NavBar";
-
+ 
 export default function LandingPage() {
   const [heroCount, setHeroCount] = useState(2);
   let heroData = [
@@ -25,8 +24,7 @@ export default function LandingPage() {
   return (
     <div>
       <Background heroCount={heroCount} />
-      <NavBar />
-      <Hero
+       <Hero
         heroCount={heroCount}
         heroData={heroData[heroCount]}
         setHeroCount={setHeroCount}

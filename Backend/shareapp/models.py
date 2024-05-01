@@ -1,8 +1,16 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 import uuid
 import os
  
-# This class represents a Folder model with a unique identifier (uid) and a creation date.
+class CustomUser(AbstractUser):
+     email = models.EmailField(unique=True)
+     USERNAME_FIELD ="email"
+     REQUIRED_FIELDS = ["username"]
+     
+     def __str__(self) -> str:
+         return self.email
+  
 
 class Folder(models.Model):
     uid= models.UUIDField(primary_key=True,editable=False,default=uuid.uuid4)
@@ -21,3 +29,8 @@ class Files(models.Model):
     created_at=models.DateField(auto_now=True)
     
         
+# class Contact(models.Model):
+#     name =models.CharField(max_length=50)
+#     email =models.EmailField()
+#     subject =models.CharField(max_length=50)
+#     message =models.TextField()

@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/images/file-storage.png";
 import signin_icon from "../../assets/images/people.png";
 import "./NavBar.css";
@@ -15,8 +16,16 @@ const NavBar = () => {
         <div className="nav-title">SwiftShare</div>
       </div>
       <ul className="nav-menu">
-        <li id="menu">About</li>
-        <li id="menu">Contact us</li>
+        <li id="menu">
+          <Link to="/about" className="menu">
+            About
+          </Link>
+        </li>
+        <li id="menu">
+          <NavLink to="/contact" className="menu">
+            Contact
+          </NavLink>
+        </li>
         <li className="nav-signin" onClick={redirectTologin}>
           <img src={signin_icon} alt="Sign In" className="nav-signin-logo" />
           Sign In

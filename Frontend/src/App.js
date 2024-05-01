@@ -3,13 +3,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"; // [1] Added us
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import About from "./pages/About/About";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/SignUp";
-import Download from "./pages/Download/Download";
+import Contact from "./pages/Contact/Contact";
 import GetLink from "./pages/GetLink/GetLink";
 import Home from "./pages/Home/Home";
 import LandingPage from "./pages/LandingPage/LandingPage";
-
+import NavBar from "./components/NavBar/NavBar"; 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [userstate, setUserState] = useState({});
@@ -17,7 +18,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 5000);
+    }, 3000);
   }, []);
 
   const loaderStyle = {
@@ -35,19 +36,21 @@ function App() {
         </div>
       ) : (
         <>
-           
           <ToastContainer position="top-right" autoClose={5000} />
+         
           <BrowserRouter>
+          <NavBar/>
             <Routes>
               <Route path="/home" element={<Home />} />
               <Route path="/getlink" element={<GetLink />} />
-              <Route path="/download" element={<Download />} />
               <Route
                 path="/signin"
                 element={<Login setUserState={setUserState} />}
               ></Route>
               <Route path="/signup" element={<Register />}></Route>
               <Route path="/" element={<LandingPage />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
             </Routes>
           </BrowserRouter>
         </>

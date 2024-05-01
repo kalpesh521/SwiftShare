@@ -1,14 +1,17 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { FaTimesCircle } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../../App.css";
 import basestyle from "./Base.module.css";
 import loginstyle from "./login.module.css";
 
-const Login = ({ setUserState }) => {
+const Login = () => {
   const navigate = useNavigate();
   const [formErrors, setFormErrors] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const [user, setUserDetails] = useState({
     email: "",
     password: "",
@@ -20,6 +23,7 @@ const Login = ({ setUserState }) => {
       ...user,
       [name]: value,
     });
+    console.log(user);
   };
   const validateForm = (values) => {
     const error = {};
@@ -35,27 +39,45 @@ const Login = ({ setUserState }) => {
     return error;
   };
 
-  const loginHandler = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormErrors(validateForm(user));
-    setIsSubmit(true);
-    // if (!formErrors) {
-
-    // }
-  };
-
-  useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(user);
-      axios.post("http://localhost:9002/login", user).then((res) => {
-        alert(res.data.message);
-        setUserState(res.data.user);
-        navigate("/", { replace: true });
-      });
+    if (isLoading) {
+      return;
     }
-  }, [formErrors]);
+    setLoading(true);
+
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/login/", user);
+      localStorage.setItem("accessToken", response.data.tokens.access);
+      console.log(response.data.tokens.access);
+      localStorage.setItem("refreshToken", response.data.tokens.refresh);
+      console.log("Success!", response.data);
+      toast.success("Registration successful!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+      navigate("/", { replace: true });
+      
+    } catch (error) {
+      if (error.response && error.response.data) {
+        console.log("Error during registration!", error.response.data);
+        toast.error(error.response.data.detail || "Error during registration!");
+      } else {
+        console.log("Error during registration!", error.message);
+        toast.error("Error during registration!");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className={loginstyle.login}>
+      <FaTimesCircle className={basestyle.icon} onClick={() => navigate("/")} />
       <form>
         <h1 style={{ marginTop: -10, marginBottom: 30 }}>Welcome Back</h1>
         <p>Please Sign In</p>
@@ -77,12 +99,13 @@ const Login = ({ setUserState }) => {
           value={user.password}
         />
         <p className={basestyle.error}>{formErrors.password}</p>
+
         <button
           className={basestyle.button_common}
-          onClick={loginHandler}
+          onClick={handleSubmit}
           style={{ display: "block", margin: "20px auto 0" }}
         >
-          SIGN IN
+          {isLoading ? <div className={basestyle.loader} /> : "SIGN IN"}
         </button>
       </form>
       <div style={{ display: "inline  " }}>

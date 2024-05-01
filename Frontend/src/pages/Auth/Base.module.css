@@ -10,27 +10,39 @@
     margin-top: 20px;
     margin-bottom: -100px;
     font-family: 'Poppins';
+    position: relative;
+}
 
+.loader {
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #fff;
+    border-radius: 50%;
+    margin-left: 45%;
 
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .icon {
     position: fixed;
-    top: 20px;
-    /* Adjust as needed */
-    right: 20px;
-    /* Adjust as needed */
+    top: 30px;
+    right: 40px;
     cursor: pointer;
-    color: red;
-    /* Adjust color as needed */
+    color: white;
     font-size: 24px;
-    /* Adjust size as needed */
 }
 
 .error {
     color: red;
     text-align: left;
     margin: auto;
-    font-size: 16px;
+    font-size: 14px;
     padding: 0px 1rem;
 }
