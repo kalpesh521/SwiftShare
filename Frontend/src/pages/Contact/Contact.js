@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { FaTimesCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import basestyle from "../../pages/Auth/Base.module.css";
-import contactstyle from "../../pages/Auth/SignUp.module.css";
-import "./Contact.css";
+import contactstyle from "../../pages/Contact/contact.module.css";
+import { FaCloudUploadAlt } from "react-icons/fa";
+import { MdOutlinePhoneInTalk } from "react-icons/md";
 
 const Contact = () => {
   const navigate = useNavigate();
@@ -66,6 +66,12 @@ const Contact = () => {
         pauseOnHover: true,
         draggable: true,
       });
+      setUserDetails({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
       navigate("/contact", { replace: true });
     } catch (error) {
       console.log("Error during registration!", error.response?.data);
@@ -77,13 +83,21 @@ const Contact = () => {
 
   return (
     <>
-      <div className={contactstyle.register}>
-        <FaTimesCircle
-          className={basestyle.icon}
-          onClick={() => navigate("/")}
-        />
+      <div
+        className={contactstyle.register}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: 50,
+          marginLeft: 500,
+        }}
+      >
         <form>
-          <h1 style={{ marginTop: -10, marginBottom: 30 }}>CONTACT US</h1>
+          <div className= {contactstyle.title}>
+            <MdOutlinePhoneInTalk className= {contactstyle.icon} size={35} color="blue" />
+            <h1 style={{ marginTop: -10, marginBottom: 30 }}>CONTACT US</h1>
+          </div>
           <input
             type="text"
             name="name"
@@ -107,16 +121,16 @@ const Contact = () => {
             type="text"
             name="subject"
             id="subject"
+            className={contactstyle.subject}
             placeholder="Subject"
             onChange={changeHandler}
             value={user.subject}
           />
           <p className={basestyle.error}>{formErrors.subject}</p>
 
-          <input
-            type="text"
+          <textarea
             name="message"
-            id="message"
+            className={contactstyle.message}
             placeholder="Message"
             onChange={changeHandler}
             value={user.message}

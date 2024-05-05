@@ -1,19 +1,23 @@
 .about-section {
     font-family: "Poppins";
     padding: 10px;
-    width: 60%;
-    height: 50%;
+    width: 90%;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 24px;
-    margin-left: 350px;
-    margin-top: -80px;
+    margin-top: 15px;
+    margin-left: 55px;
     background: linear-gradient(to right, #ECF2FF, #FBFCFF);
+    overflow: auto;
+    border: 1px solid #dddfe2;
+    box-shadow: 0 2px 4px rgb(0 0 10 / 64%), 0 8px 16px rgb(0 10 0 / 34%);
+    border-radius: 15px;
 }
 
 .about-image-content {
-    width: 45%;
+    width: 35%;
     max-width: 100%;
     text-align: center;
 }
@@ -23,9 +27,10 @@
     height: auto;
 }
 
-/* Text */
+
 .about-text-content {
     width: 50%;
+    margin-left: 20px;
 }
 
 .about-title {
@@ -41,12 +46,12 @@
 .about-title span::before {
     content: '';
     position: absolute;
-    width: 75%;
+    width: 80%;
     height: 4px;
-    background-color: #9D2553;
+    background-color:  #6834d4;
     border-radius: 8px;
     left: 0;
-    bottom: -12px;
+    bottom: -5px;
 }
 
 .about-description {

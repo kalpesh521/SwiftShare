@@ -1,13 +1,21 @@
 .background {
     height: 100%;
     width: 100%;
-    float: left;
+    /* float: left;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 0; */
     padding: none;
+    /* margin: 100px; */
+    /* padding-left: 250px;
+    margin-right: 300px; */
     position: fixed;
     object-fit: cover;
     z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0;
+    padding:0;
 }

@@ -1,5 +1,4 @@
 .login {
-
     width: 450px;
     background: #fff;
     border: 1px solid #dddfe2;
@@ -8,8 +7,9 @@
     padding: 2rem;
     align-items: center;
     text-align: center;
-    margin-top: 60px;
-
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
 }
 
 .login>form {
@@ -24,7 +24,7 @@
 
 .login>form input {
     border-radius: 20px;
-    border: 2px solid rgb(250, 250, 250);
+    border: 2px solid rgb(235, 235, 235);
     outline: none;
     color: #1d2129;
     background-color: rgb(246, 245, 245);

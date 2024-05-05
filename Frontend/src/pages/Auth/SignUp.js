@@ -1,12 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { FaTimesCircle } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import basestyle from "./Base.module.css";
 import registerstyle from "./SignUp.module.css";
-
+ 
 const Register = () => {
   const navigate = useNavigate();
   const [formErrors, setFormErrors] = useState({});
@@ -86,14 +85,11 @@ const Register = () => {
 
   return (
     <>
-      <div className={registerstyle.register}>
-        <FaTimesCircle
-          className={basestyle.icon}
-          onClick={() => navigate("/")}
-        />
+      <div className={registerstyle.register} style={{display:"flex", justifyContent:"center", alignItems:"center",marginTop:50, marginLeft:500}}>
+      
         <form>
-          <h1 style={{ fontSize: 40, marginTop: -10, marginBottom: 30 }}>
-            CREATE ACCOUNT
+          <h1 style={{ fontSize: 30, marginTop: -10, marginBottom: 30 }}>
+            Create Your Account
           </h1>
           <input
             type="text"

@@ -12,11 +12,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv()
+# load_dotenv()
 # DEBUG = os.getenv('DEBUG')
 # SECRET_KEY = os.getenv('SECRET_KEY')
 # DATABASE_URL = os.getenv('DATABASE_URL')
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'shareapp',
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
+ 
 ]
 
 MIDDLEWARE = [
@@ -73,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+ 
             ],
         },
     },
@@ -91,6 +93,13 @@ DATABASES = {
     }
 }
 
+DEBUG =True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'kalpeshpawar7875@gmail.com'
+EMAIL_HOST_PASSWORD ='ieiu lbim onyc pdaz'
+EMAIL_PORT= 587
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -130,27 +139,25 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
-
+ 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATIC_URL = '/static/'
-
+ 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
  
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
+# STATIC_ROOT = 'staticfiles'
+STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
-STATICFILES_DIR = {
-    os.path.join(BASE_DIR , "public/static")
-}
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR / "public/static",),   
+]
 
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'public/static') 
 MEDIA_URL = '/media/'

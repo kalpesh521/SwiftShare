@@ -3,14 +3,15 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"; // [1] Added us
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
-import About from "./pages/About/About";
+import NavBar from "./components/NavBar/NavBar";
+import Services from "./pages/Services/Services";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/SignUp";
 import Contact from "./pages/Contact/Contact";
 import GetLink from "./pages/GetLink/GetLink";
 import Home from "./pages/Home/Home";
 import LandingPage from "./pages/LandingPage/LandingPage";
-import NavBar from "./components/NavBar/NavBar"; 
+import About from "./pages/About/About"
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [userstate, setUserState] = useState({});
@@ -37,9 +38,9 @@ function App() {
       ) : (
         <>
           <ToastContainer position="top-right" autoClose={5000} />
-         
+
           <BrowserRouter>
-          <NavBar/>
+            <NavBar />
             <Routes>
               <Route path="/home" element={<Home />} />
               <Route path="/getlink" element={<GetLink />} />
@@ -49,6 +50,7 @@ function App() {
               ></Route>
               <Route path="/signup" element={<Register />}></Route>
               <Route path="/" element={<LandingPage />} />
+              <Route path="/services" element={<Services />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>

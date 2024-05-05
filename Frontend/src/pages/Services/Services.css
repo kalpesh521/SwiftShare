@@ -1,0 +1,36 @@
+.services-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+
+}
+
+.service-card {
+    width: 25%;
+    height: 40vh;
+    padding: 25px;
+    border: 1px solid #dddfe2;
+    box-shadow: 0 2px 4px rgb(0 0 10 / 64%), 0 8px 16px rgb(0 10 0 / 34%);
+    border-radius: 15px;
+    background-color: white;
+    margin: 0px 50px;
+}
+
+.service-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.service-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.service-description {
+    font-size: 16px;
+}
+
+img {
+    width: 70px;
+    height: 70px;
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaCloudUploadAlt, FaLink } from "react-icons/fa";
+import { FaCloudUploadAlt } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -8,6 +8,7 @@ import "./Home.css";
 export default function Home() {
   const [files, setFiles] = useState([]);
   const [email, setEmail] = useState("");
+  const [isLoading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const upload_file = async () => {
@@ -17,7 +18,10 @@ export default function Home() {
       for (var i = 0; i < files.length; i++) {
         formdata.append("files", files[i]);
       }
-
+      if (isLoading) {
+        return;
+      }
+      setLoading(true);
       const response = await fetch("http://127.0.0.1:8000/handle/", {
         method: "POST",
         body: formdata,
@@ -29,7 +33,7 @@ export default function Home() {
       const url = `http://127.0.0.1:8000/download/${result.data.folder}`;
       console.log(url);
 
-      toast.success("Files uploaded successfully!!", {
+      toast.success("Your Link is Ready!!", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -41,6 +45,8 @@ export default function Home() {
       navigate("/getlink", { state: { url: url } });
     } catch (error) {
       console.error("Error uploading files:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -93,8 +99,8 @@ export default function Home() {
 
       <div className="display-files">
         <div className="display-files-header">
-          <p style={{ width: "120px", textAlign: "center" }}>Name</p>
-          <p style={{ marginLeft: "80px", textAlign: "center" }}>Size</p>
+          <p style={{ width: "100px", textAlign: "center" }}>Name</p>
+          <p style={{ marginLeft: "90px", textAlign: "center" }}>Size</p>
           <p style={{ width: "70px", textAlign: "center" }}>Delete</p>
         </div>
         <div className="display-files-content">
@@ -105,7 +111,7 @@ export default function Home() {
                   <p
                     style={{
                       fontSize: "14px",
-                      width: "230px",
+                      width: "220px",
                       height: "20px",
                       overflow: "hidden",
                     }}
@@ -141,14 +147,16 @@ export default function Home() {
       </div>
 
       <div>
+      
         <button
-          onClick={upload_file}
+          type="submit"
           className={`${
             !(files.length && email) ? "disabled-btn  " : "primary-btn  "
           }`}
+          disabled={isLoading}
+          onClick={upload_file}
         >
-          <FaLink size={18} />
-          Get link
+          {isLoading ? <div id="loader" /> : " GET LINK"}
         </button>
       </div>
     </div>

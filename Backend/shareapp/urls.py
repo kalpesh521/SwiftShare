@@ -26,5 +26,6 @@ urlpatterns = [
     path('token/refresh/',TokenRefreshView.as_view(),name="refresh_token")
     
     
+    
  ]
 

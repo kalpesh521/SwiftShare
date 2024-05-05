@@ -1,21 +1,29 @@
+{% load static %} 
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Download</title>
-  
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <style>
-    body {
+ <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Download</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
         scroll-behavior: smooth;
-        font-family: 'Poppins';
+        font-family: "Poppins";
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        background-color: #161e32;
+        background-color: #6834d4;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -24,8 +32,8 @@
         overflow: hidden;
         padding-top: 5%;
       }
-      
-    .download-container {
+
+      .download-container {
         width: 450px;
         align-self: center;
         height: fit-content;
@@ -35,10 +43,13 @@
         align-items: center;
         background-color: white;
         padding: 5%;
-        border-radius: 5px;
-        margin-top : 40px;
-       }
-      
+        border-radius: 20px;
+        margin-top: 40px;
+        border: 1px solid #dddfe2;
+        box-shadow: 0 2px 4px rgb(0 0 10 / 64%), 0 8px 16px rgb(0 10 0 / 34%);
+        border-radius: 15px;
+      }
+
       .download-file-container {
         display: flex;
         flex-direction: row;
@@ -55,11 +66,11 @@
         margin-bottom: 40px;
         background-color: rgba(255, 255, 255, 0.9);
       }
-      
+
       .download-file-container p {
         font-size: 15px;
       }
-      
+
       .download-btn {
         outline: none;
         display: flex;
@@ -77,60 +88,88 @@
         cursor: pointer;
         border: none;
       }
-      #title{
-         font-size: 30px; 
-         font-weight: 600;
-         margin-top:-20px;
+      #title {
+        font-size: 30px;
+        font-weight: 600;
+        margin-top: -20px;
       }
-  </style>
+      .title-container{
+        display:flex;
+        flex-direction:horizontal;
+         margin-bottom: 35px; 
+        margin-top:-40px;
+      }
+      #icon{
+        width:35px;
+        height:35px;
+      }
+      #heading{
+        margin-top:-2px;
+        margin-left:10px;
+        color:#FF8A08;
+        font-size: 28px;
+        font-weight:600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="download-container">
+       <div class="title-container">
+        {% comment %} <i class="fas fa-cloud-download-alt" ></i> {% endcomment %}
+        <img id ="icon" src="{% static 'images/icon.png' %}"></img>
+        <p  id="heading">SwiftShare</p>
+       </div>
 
-</head>
-<body>
-  <div class="download-container">
-    <p id="title">File is ready!</p>
+      <p id="title">File is ready!</p>
 
-    <div class="download-file-container">
-      <p>
-        <i class="fa-regular fa-clock" style="margin-right:5px"></i>
+      <div class="download-file-container">
+        <p>
+          <i class="fa-regular fa-clock" style="margin-right: 5px"></i>
           Expires on April 30 , 2024 10.02.00 PM GMT+5.30
-      </p>
-      
+        </p>
+      </div>
+      <button class="download-btn">
+        <i class="fa fa-download"></i>
+        <a
+          href="/media/zip/{{uid}}.zip"
+          style="text-decoration: none; color: white; font-weight: 600"
+          >DOWNLOAD DATA PACKAGE</a
+        >
+      </button>
     </div>
-    <button class="download-btn">     <i class="fa fa-download"></i>   
-        <a href="/media/zip/{{uid}}.zip"  style="text-decoration: none;color: white;font-weight:600">DOWNLOAD DATA PACKAGE</a>
-    </button>
-  </div>
 
-  {% comment %} <script src="script.js"></script> {% endcomment %}
-  <script>
-    {% comment %} document.addEventListener("DOMContentLoaded", function () {
-        const file = {
-          lastModified: 1711390184136,
-          lastModifiedDate: "Mon Mar 25 2024 23:39:44 GMT+0530 (India Standard Time)",
-          name: "Unit  2 question bank with solution.pdf",
-          size: 130407,
-          type: "application/pdf",
-          webkitRelativePath: "",
-        };
-      
-        function fileSize(size) {
-          if (size >= 1073741824) {
-            return `${(size / 1073741824).toFixed(2)} GB`;
-          } else if (size >= 52428800) {
-            return `${(size / 1048576).toFixed(2)} MB`;
-          } else if (size >= 1024) {
-            return `${(size / 1024).toFixed(2)} KB`;
+    {% comment %}
+    <script src="script.js"></script>
+    {% endcomment %}
+    <script>
+      {% comment %} document.addEventListener("DOMContentLoaded", function () {
+          const file = {
+            lastModified: 1711390184136,
+            lastModifiedDate: "Mon Mar 25 2024 23:39:44 GMT+0530 (India Standard Time)",
+            name: "Unit  2 question bank with solution.pdf",
+            size: 130407,
+            type: "application/pdf",
+            webkitRelativePath: "",
+          };
+
+          function fileSize(size) {
+            if (size >= 1073741824) {
+              return `${(size / 1073741824).toFixed(2)} GB`;
+            } else if (size >= 52428800) {
+              return `${(size / 1048576).toFixed(2)} MB`;
+            } else if (size >= 1024) {
+              return `${(size / 1024).toFixed(2)} KB`;
+            }
           }
-        }
-      
-        const downloadFileContainer = document.querySelector(".download-file-container");
-        const downloadFileName = downloadFileContainer.querySelector("p:first-child");
-        const downloadFileSize = downloadFileContainer.querySelector("p:last-child");
-        
-        downloadFileName.textContent = file.name;
-        downloadFileSize.textContent = fileSize(file.size);
-      });
-       {% endcomment %}
-  </script>
-</body>
+
+          const downloadFileContainer = document.querySelector(".download-file-container");
+          const downloadFileName = downloadFileContainer.querySelector("p:first-child");
+          const downloadFileSize = downloadFileContainer.querySelector("p:last-child");
+
+          downloadFileName.textContent = file.name;
+          downloadFileSize.textContent = fileSize(file.size);
+        });
+         {% endcomment %}
+    </script>
+  </body>
 </html>

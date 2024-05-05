@@ -19,8 +19,6 @@ function About() {
         We are your partner in revolutionizing recruitment with cutting-edge AI technology and a passion for helping you find the perfect talent.
         </p>
 
-        <h4 className="about-text-title">Our Solutions</h4>
-
         <Feature
           title="Candidate Screening"
           description="We employ cutting-edge Explainable AI to meticulously analyze candidate profiles, sifting through vast pools of applicants to identify the most promising individuals for your organization."

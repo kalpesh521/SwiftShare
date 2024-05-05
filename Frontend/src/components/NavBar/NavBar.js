@@ -11,11 +11,23 @@ const NavBar = () => {
   };
   return (
     <div className="nav">
-      <div className="nav-left">
-        <img src={logo} alt="Logo" className="nav-logo" />
-        <div className="nav-title">SwiftShare</div>
+      <div  className="nav-left">
+        <Link style={{textDecoration:"none",color:"#FDDE55"}} to="/">
+          <img src={logo} alt="Logo" className="nav-logo" />
+          <div className="nav-title">SwiftShare</div>
+        </Link>
       </div>
       <ul className="nav-menu">
+        <li id="menu">
+          <Link to="/home" className="menu">
+            Home
+          </Link>
+        </li>
+        <li id="menu">
+          <Link to="/services" className="menu">
+            Services
+          </Link>
+        </li>
         <li id="menu">
           <Link to="/about" className="menu">
             About

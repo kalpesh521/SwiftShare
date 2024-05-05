@@ -4,7 +4,7 @@
     align-items: center;
     color: white;
     margin: 15px 55px;
- 
+
 }
 
 .nav-logo {
@@ -15,18 +15,24 @@
 .nav-title {
     font-weight: 700;
     font-size: 28px;
-
+    margin-left: 55px;
+    text-decoration: none;
+    margin-top: -45px;
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
-    font-size: 18px;
+    font-size: 16px;
     gap: 40px;
     align-items: center;
     font-weight: 600;
-    /* list-style-type: none; */
+    color: white;
+}
+
+.menu {
     text-decoration: none;
+    color: white;
 
 }
 
@@ -59,8 +65,8 @@
     height: 25px;
 }
 
-#menu:hover {
-    color: #fcbc28;
+.menu:hover {
+    color: #FDDE55;
     cursor: pointer;
 }
 

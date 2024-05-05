@@ -8,7 +8,7 @@ from rest_framework.permissions import AllowAny,IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import status
  
-import pyrebase
+# import pyrebase
 import os 
   
 
@@ -29,7 +29,6 @@ import os
 # doc_ref.set(data)
 
 # print('Document ID :', doc_ref.id)
-
 
 
 class UserRegistrationApiView(GenericAPIView):
@@ -100,30 +99,9 @@ class  HandleFileUpload(viewsets.ModelViewSet):
                 'data': serializer.errors,
              })
 
-
-# class HandleFileUpload(APIView):
-#     # This method handles POST requests for file uploads
-#     def post(self,request):
-#         try:         
-#             data=request.data
-#             serializer= FileListSerializer(data=data)
-            
-#             if serializer.is_valid():
-#                 serializer.save()
-#                 return Response({
-#                     'status':200,
-#                     'message':'Successfully uploaded file ! ',
-#                     'data':serializer.data,
-#                 })
-#             return Response({
-#                     'status':400,
-#                     'message':'Something went wrong',
-#                     'data':serializer.errors,
-#                     })
-#         except Exception as e : 
-#               print(e) 
-
-
 class ContactView(viewsets.ModelViewSet):
-    serializer_class = ContactSerializer
     queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
+ 
+    
+    

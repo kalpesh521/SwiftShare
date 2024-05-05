@@ -11,7 +11,12 @@ export default function GetLink() {
   console.log("Generated Url : " + generatedUrl);
 
   return (
-    <div className="getlink-container">
+    <div className="getlink-container" style={{
+      justifyContent: "center",
+      alignItems: "center",
+      marginTop: 100,
+      marginLeft: 425,
+    }}>
       <p style={{ fontSize: "24px", fontWeight: "600" }}>Your link is ready!</p>
       <p id= "subtittle">The download link for your transfer is available  </p>
       <p id= "subtittle">for only 7 days</p>

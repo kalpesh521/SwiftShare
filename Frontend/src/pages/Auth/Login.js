@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { FaTimesCircle } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -49,10 +48,13 @@ const Login = () => {
 
     try {
       const response = await axios.post("http://127.0.0.1:8000/login/", user);
+      console.log("Response from backend:", response);
+
       localStorage.setItem("accessToken", response.data.tokens.access);
       console.log(response.data.tokens.access);
       localStorage.setItem("refreshToken", response.data.tokens.refresh);
       console.log("Success!", response.data);
+
       toast.success("Registration successful!", {
         position: "top-right",
         autoClose: 3000,
@@ -62,7 +64,6 @@ const Login = () => {
         draggable: true,
       });
       navigate("/", { replace: true });
-      
     } catch (error) {
       if (error.response && error.response.data) {
         console.log("Error during registration!", error.response.data);
@@ -76,11 +77,20 @@ const Login = () => {
     }
   };
   return (
-    <div className={loginstyle.login}>
-      <FaTimesCircle className={basestyle.icon} onClick={() => navigate("/")} />
+    <div
+      className={loginstyle.login}
+      style={{
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 70,
+        marginLeft: 500,
+      }}
+    >
       <form>
-        <h1 style={{ marginTop: -10, marginBottom: 30 }}>Welcome Back</h1>
-        <p>Please Sign In</p>
+        <h1>Welcome Back</h1>
+        <p style={{ color: "grey", marginBottom: "20px" }}>
+          Please signin to continue
+        </p>
         <input
           type="email"
           name="email"
@@ -108,7 +118,7 @@ const Login = () => {
           {isLoading ? <div className={basestyle.loader} /> : "SIGN IN"}
         </button>
       </form>
-      <div style={{ display: "inline  " }}>
+      <div>
         <NavLink to="/signup" style={{ textDecoration: "none", color: "grey" }}>
           {" "}
           Don't have an account?
