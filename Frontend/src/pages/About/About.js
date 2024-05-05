@@ -2,7 +2,7 @@ import React from "react";
 // import Image from "../../Assets/Man-working-on-laptop-icon-illustration-on-transparent-background-PNG.png";
 import Feature from "./Feature";
 import "./About.css";
-import logo from "../../assets/images/file-storage.png";
+import logo from "../../assets/images/about.jpg";
 
 function About() {
   return (
@@ -16,23 +16,17 @@ function About() {
           <span>About Us</span>
         </h3>
         <p className="about-description">
-        We are your partner in revolutionizing recruitment with cutting-edge AI technology and a passion for helping you find the perfect talent.
-        </p>
+        Welcome to SwiftShare, your ultimate solution for fast, secure, and hassle-free file sharing. At SwiftShare, we understand the importance of sharing files efficiently while prioritizing security and user experience. Our platform is designed to provide you with the simplest and fastest interface to share large files securely with your recipients.
+         </p>
 
         <Feature
-          title="Candidate Screening"
-          description="We employ cutting-edge Explainable AI to meticulously analyze candidate profiles, sifting through vast pools of applicants to identify the most promising individuals for your organization."
+          title="Get Started with SwiftShare : "
+          description="Ready to experience the simplicity and security of SwiftShare? Sign up today and start sharing files with confidence. Whether you're collaborating with colleagues, sharing memories with friends, or distributing content to clients, SwiftShare has you covered.
+
+          Join SwiftShare now and elevate your file sharing experience to new heights!"
         />
 
-        <Feature
-          title="Smart Video Interviews"
-          description="We facilitate smart video interviews that enable you to gain valuable insights into candidates' personalities and communication skills, saving you time on initial screening while providing a more in-depth understanding of each candidate."
-        />
-
-        <Feature
-          title="Customized Solutions"
-          description="We offer tailor-made solutions to meet your specific recruitment needs, whether you're hiring for entry-level positions or seeking C-suite executives."
-        />
+         
       </div>
     </div>
   );
