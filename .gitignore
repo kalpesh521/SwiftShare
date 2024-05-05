@@ -1,4 +1,6 @@
-Backend/public/static/
-Backend/public/zip/
+# Backend/public/static/
+# Backend/public/zip/
 
+static/
+zip/
  
