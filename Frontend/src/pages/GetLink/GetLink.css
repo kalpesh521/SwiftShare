@@ -9,7 +9,7 @@
   background-color: white;
   padding: 5%;
   border-radius: 5px;
-  margin-top: 100px;
+  margin-top: 50px;
   margin-bottom: 30px;
   border: 1px solid #dddfe2;
   box-shadow: 0 2px 4px rgb(0 0 10 / 64%), 0 8px 16px rgb(0 10 0 / 34%);
@@ -35,11 +35,14 @@
   padding-bottom: 2%;
   background-color: rgba(255, 255, 255, 0.9);
   margin-top: 20px;
+  position: relative;
 }
+
+ 
 
 #link {
   height: 55px;
-  width: 100%;
+  width: 80%;
   background-color: rgb(240, 240, 240);
   text-decoration: none;
   border-radius: 5px;
@@ -50,11 +53,36 @@
 .icon-container {
   display: flex;
   align-items: center;
-  gap: 15px;
+  justify-content: center;
+  flex-direction: row;
+  width: 70px;
+  height: 70px;
+  outline: none;
+  position: relative;
+  background: none;
+  border: none;
 }
 
-.icon-container .icon {
+.icon-container .getlink-icon {
   border: 2px solid dodgerblue;
   border-radius: 20%;
   padding: 5px;
+}
+
+.link-loader {
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-top-color: #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

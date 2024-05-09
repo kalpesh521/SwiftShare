@@ -50,12 +50,12 @@ const Login = () => {
       const response = await axios.post("http://127.0.0.1:8000/login/", user);
       console.log("Response from backend:", response);
 
-      localStorage.setItem("accessToken", response.data.tokens.access);
-      console.log(response.data.tokens.access);
-      localStorage.setItem("refreshToken", response.data.tokens.refresh);
+      localStorage.setItem("accessToken", response.data.token.access);
+      console.log(response.data.token.access);
+      localStorage.setItem("refreshToken", response.data.token.refresh);
       console.log("Success!", response.data);
 
-      toast.success("Registration successful!", {
+      toast.success("Successfully Logged In!", {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,

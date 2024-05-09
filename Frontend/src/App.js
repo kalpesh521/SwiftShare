@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom"; // [1] Added useNavigate
+import { BrowserRouter, Route, Routes } from "react-router-dom"; 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import RingLoader from "react-spinners/RingLoader";
 import NavBar from "./components/NavBar/NavBar";
 import Services from "./pages/Services/Services";
 import Login from "./pages/Auth/Login";
@@ -22,18 +23,18 @@ function App() {
     }, 3000);
   }, []);
 
-  const loaderStyle = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "80vh",
-  };
+    const loaderStyle = {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "90vh",
+    };
 
   return (
     <>
       {isLoading ? (
         <div style={loaderStyle}>
-          {/* <RingLoader color="white" size={80} /> */}
+          <RingLoader color="white" size={120} />
         </div>
       ) : (
         <>
