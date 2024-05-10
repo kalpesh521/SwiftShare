@@ -1,28 +1,26 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import signout_icon from "../../assets/images/exit.png";
 import logo from "../../assets/images/file-storage.png";
 import signin_icon from "../../assets/images/people.png";
 import "./NavBar.css";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { css } from "glamor";
 
-const NavBar = () => {
+const NavBar = ({isLoggedIn, setIsLoggedIn}) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
-  const [isLoggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     const checkAuthStatus = () => {
       const accessToken = localStorage.getItem("accessToken");
       const refreshToken = localStorage.getItem("refreshToken");
       if (accessToken && refreshToken) {
-        setLoggedIn(true);
+        setIsLoggedIn(true);
       } else {
-        setLoggedIn(false);
+        setIsLoggedIn(false);
       }
     };
     checkAuthStatus();
@@ -50,7 +48,7 @@ const NavBar = () => {
         );
         localStorage.removeItem("accessToken");
         localStorage.removeItem("refreshToken");
-        setLoggedIn(false);
+        setIsLoggedIn(false);
         setUsername("");
         navigate("/signin");
         console.log("Log out successful!");

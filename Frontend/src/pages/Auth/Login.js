@@ -7,7 +7,7 @@ import "../../App.css";
 import basestyle from "./Base.module.css";
 import loginstyle from "./login.module.css";
 
-const Login = () => {
+const Login = ({setIsLoggedIn}) => {
   const navigate = useNavigate();
   const [formErrors, setFormErrors] = useState({});
   const [isLoading, setLoading] = useState(false);
@@ -63,6 +63,7 @@ const Login = () => {
         pauseOnHover: true,
         draggable: true,
       });
+      setIsLoggedIn(true);
       navigate("/", { replace: true });
     } catch (error) {
       if (error.response && error.response.data) {
