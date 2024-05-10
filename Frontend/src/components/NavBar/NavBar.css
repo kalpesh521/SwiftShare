@@ -49,9 +49,8 @@
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
     cursor: pointer;
     width: fit-content;
-    font-size: 16px;
+    font-size: 15px;
     color: #6834d4;
-
 }
 
 .nav-signin:hover {
@@ -63,6 +62,10 @@
 .nav-signin-logo {
     width: 25px;
     height: 25px;
+}
+.nav-signout-logo {
+    width: 20px;
+    height: 20px;
 }
 
 .menu:hover {
@@ -77,5 +80,5 @@
 }
 
 .active {
-    color: #FDDE55; /* Change to your desired active color */
+    color: #FDDE55; 
   }

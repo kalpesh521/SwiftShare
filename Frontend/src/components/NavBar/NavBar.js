@@ -1,15 +1,71 @@
-import { useLocation ,useNavigate} from "react-router-dom";
-import { Link, NavLink } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import signout_icon from "../../assets/images/exit.png";
 import logo from "../../assets/images/file-storage.png";
 import signin_icon from "../../assets/images/people.png";
 import "./NavBar.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { css } from "glamor";
 
 const NavBar = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [isLoggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const checkAuthStatus = () => {
+      const accessToken = localStorage.getItem("accessToken");
+      const refreshToken = localStorage.getItem("refreshToken");
+      if (accessToken && refreshToken) {
+        setLoggedIn(true);
+      } else {
+        setLoggedIn(false);
+      }
+    };
+    checkAuthStatus();
+  }, []);
 
   const redirectTologin = () => {
     navigate("/signin");
+  };
+
+  const handleSignout = async () => {
+    try {
+      const accessToken = localStorage.getItem("accessToken");
+      const refreshToken = localStorage.getItem("refreshToken");
+
+      if (accessToken && refreshToken) {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        };
+        await axios.post(
+          "http://127.0.0.1:8000/logout/",
+          { refresh: refreshToken },
+          config
+        );
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+        setLoggedIn(false);
+        setUsername("");
+        navigate("/signin");
+        console.log("Log out successful!");
+        toast.success("Logged Out Successfully!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      }
+    } catch (error) {
+      console.error("Failed to logout", error.response?.data || error.message);
+    }
   };
 
   return (
@@ -57,10 +113,21 @@ const NavBar = () => {
             Contact
           </NavLink>
         </li>
-        <li className="nav-signin" onClick={redirectTologin}>
-          <img src={signin_icon} alt="Sign In" className="nav-signin-logo" />
-          Sign In
-        </li>
+        {!isLoggedIn ? (
+          <li className="nav-signin" onClick={redirectTologin}>
+            <img src={signin_icon} alt="Sign In" className="nav-signin-logo" />
+            Sign In
+          </li>
+        ) : (
+          <li className="nav-signin" onClick={handleSignout}>
+            <img
+              src={signout_icon}
+              alt="Sign Out"
+              className="nav-signout-logo"
+            />
+            Sign Out
+          </li>
+        )}
       </ul>
     </div>
   );
