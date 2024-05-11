@@ -1,8 +1,8 @@
 import { React, useEffect, useState } from "react";
 import Background from "../../components/Background/Background";
 import Hero from "../../components/Hero/Hero";
- 
-export default function LandingPage() {
+
+export default function LandingPage({isLoggedIn,setIsLoggedIn}) {
   const [heroCount, setHeroCount] = useState(2);
   let heroData = [
     { text1: "Send and Manage ", text2: "large files " },
@@ -20,14 +20,18 @@ export default function LandingPage() {
       });
     }, 2000);
   }, []);
+
   
   return (
     <div>
       <Background heroCount={heroCount} />
-       <Hero
+      <Hero
         heroCount={heroCount}
         heroData={heroData[heroCount]}
         setHeroCount={setHeroCount}
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn} 
+
       />
     </div>
   );

@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import signout_icon from "../../assets/images/exit.png";
 import logo from "../../assets/images/file-storage.png";
 import signin_icon from "../../assets/images/people.png";
 import "./NavBar.css";
 
-const NavBar = ({isLoggedIn, setIsLoggedIn}) => {
+const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
@@ -49,9 +49,6 @@ const NavBar = ({isLoggedIn, setIsLoggedIn}) => {
         localStorage.removeItem("accessToken");
         localStorage.removeItem("refreshToken");
         setIsLoggedIn(false);
-        setUsername("");
-        navigate("/signin");
-        console.log("Log out successful!");
         toast.success("Logged Out Successfully!", {
           position: "top-right",
           autoClose: 3000,
@@ -60,9 +57,11 @@ const NavBar = ({isLoggedIn, setIsLoggedIn}) => {
           pauseOnHover: true,
           draggable: true,
         });
+        console.log("Log out successful!");
       }
     } catch (error) {
       console.error("Failed to logout", error.response?.data || error.message);
+      toast.error("Failed to logout. Please try again later.");
     }
   };
 
@@ -77,7 +76,7 @@ const NavBar = ({isLoggedIn, setIsLoggedIn}) => {
       <ul className="nav-menu">
         <li id="menu">
           <NavLink
-            to="/home"
+            to={isLoggedIn ? "/home" : "/"}
             className="menu"
             activeClassName={location.pathname === "/home" ? "active" : ""}
           >

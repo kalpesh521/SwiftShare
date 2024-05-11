@@ -1,13 +1,35 @@
 import { useNavigate } from "react-router";
+import { useEffect } from "react";
 import arrow_btn from "../../assets/images/arrow.png";
 import "./Hero.css";
 
-export default function Hero({ heroData, heroCount, setHeroCount }) {
+export default function Hero({ heroData, heroCount, setHeroCount ,isLoggedIn,setIsLoggedIn}) {
   const navigate = useNavigate();
-   const redirectToHome = () => {
-    navigate("/home");
-  };
 
+  // useEffect(() => {
+  //   const checkAuthStatus = () => {
+  //     const accessToken = localStorage.getItem("accessToken");
+  //     const refreshToken = localStorage.getItem("refreshToken");
+  //     if (accessToken && refreshToken) {
+  //       setIsLoggedIn(true);
+  //     } else {
+  //       setIsLoggedIn(false);
+  //     }
+  //   };
+  //   checkAuthStatus();
+  // }, []);
+
+  const redirectToHome = () => {
+    if (isLoggedIn) {
+      navigate("/home");
+      setIsLoggedIn(true);
+    } else {
+      navigate("/signin");
+      setIsLoggedIn(false);
+    }
+  }; 
+
+  
   return (
     <div className="hero">
       <div className="hero-text">

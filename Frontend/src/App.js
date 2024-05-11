@@ -50,7 +50,15 @@ function App() {
                 element={<Login setIsLoggedIn={setIsLoggedIn} />}
               ></Route>
               <Route path="/signup" element={<Register />}></Route>
-              <Route path="/" element={<LandingPage />} />
+              <Route
+                path="/"
+                element={
+                  <LandingPage
+                    isLoggedIn={isLoggedIn}
+                    setIsLoggedIn={setIsLoggedIn}
+                  />
+                }
+              />
               <Route path="/services" element={<Services />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
