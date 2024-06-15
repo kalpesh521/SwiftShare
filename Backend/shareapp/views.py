@@ -7,30 +7,10 @@ from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import AllowAny,IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import status
- 
-# import pyrebase
 import os 
   
 
-# app = initializeApp(firebaseConfig);
-# import firebase_admin
-# from firebase_admin import credentials ,firestore
-
-# cred = credentials.Certificate(r"D:\Big Data\ShareLink\Backend\firebase-adminsdk.json")
-# firebase_admin.initialize_app(cred)
-
-# db =firestore.client() 
-# data={
-    
-#     'name':'Kalpesh',
-#     'email':'kalpeshpawar7875@gmail.com',
-# }
-# doc_ref =db.collection("info").document()
-# doc_ref.set(data)
-
-# print('Document ID :', doc_ref.id)
-
-
+ 
 class UserRegistrationApiView(GenericAPIView):
     permission_classes =(AllowAny,)
     serializer_class = UserRegistrationSerializer
