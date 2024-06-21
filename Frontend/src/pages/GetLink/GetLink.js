@@ -1,24 +1,26 @@
 import React, { useState } from "react";
-import { FaArrowUpRightFromSquare, FaCopy } from "react-icons/fa6";
+import { FaArrowUpRightFromSquare, FaCopy, FaRegClock } from "react-icons/fa6";
 import { useLocation } from "react-router-dom";
+import RingLoader from "react-spinners/RingLoader";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./GetLink.css";
-import RingLoader from "react-spinners/RingLoader";
 
 export default function GetLink() {
   const location = useLocation();
   const generatedUrl = location.state.url;
+  const expirationDateStr = location.state.expiration_date; // Get expiration date from state
   const [loading, setLoading] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
-  console.log("Generated Url : " + generatedUrl);
+
+  const baseUrl = new URL(generatedUrl).origin;
 
   const handleOpenLink = () => {
     setLoading(true);
-    setShowLoader(true); // Show full-screen loader
+    setShowLoader(true);
     setTimeout(() => {
       setLoading(false);
-      setShowLoader(false); // Hide full-screen loader after 5 seconds
+      setShowLoader(false);
       window.open(generatedUrl, "_blank");
     }, 3000);
   };
@@ -44,13 +46,17 @@ export default function GetLink() {
         </div>
       )}
       <p style={{ fontSize: "24px", fontWeight: "600" }}>Your link is ready!</p>
-      <p id="subtittle">The download link for your transfer is available </p>
+      <p id="subtittle">The download link for your transfer is available</p>
       <p id="subtittle">for only 7 days</p>
-
-      <p>You can copy the following URL and share it .</p>
+      <p id="expiration">
+        <FaRegClock style={{ marginRight: 5}} />
+        Expires on: {expirationDateStr}
+      </p>
+      <p>You can copy the following URL and share it.</p>
       <div className="link-container">
-        <div id="link">{generatedUrl}</div>
-        <div></div>
+        <div id="link">
+          <span>{baseUrl}</span>
+        </div>
         <button
           className="icon-container"
           onClick={() => {
@@ -69,12 +75,27 @@ export default function GetLink() {
         </button>
 
         {loading ? (
-          <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <RingLoader color="white" size={20} />
           </div>
         ) : (
           <button className="icon-container" onClick={handleOpenLink}>
-            <FaArrowUpRightFromSquare size={20} color="dodgerblue" className="getlink-icon" />
+            <FaArrowUpRightFromSquare
+              size={20}
+              color="dodgerblue"
+              className="getlink-icon"
+            />
           </button>
         )}
       </div>

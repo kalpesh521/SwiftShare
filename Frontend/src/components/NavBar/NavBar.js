@@ -46,6 +46,8 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
           { refresh: refreshToken },
           config
         );
+        navigate("/signin");
+
         localStorage.removeItem("accessToken");
         localStorage.removeItem("refreshToken");
         setIsLoggedIn(false);

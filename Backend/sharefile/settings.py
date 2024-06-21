@@ -86,10 +86,16 @@ WSGI_APPLICATION = 'sharefile.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+### CHANGES read secrets from .env
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres.kxwwfoqqrgwadforwdvd',
+        'PASSWORD': 'Kalpesh@@123',
+        'HOST': 'aws-0-ap-south-1.pooler.supabase.com',
+        'PORT': '5432',
     }
 }
 
@@ -121,7 +127,9 @@ AUTH_PASSWORD_VALIDATORS = [
 REST_FRAMEWORK = {  
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser', ),
+
 }
 
 # Internationalization
@@ -173,8 +181,8 @@ CORS_ORIGIN_WHITELIST = (
 AUTH_USER_MODEL = "shareapp.CustomUser" 
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=2),
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
     "UPDATE_LAST_LOGIN": False,
@@ -211,3 +219,12 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer",
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'Team Swiftshare'
+EMAIL_HOST_USER = 'kalpeshpawar7875@gmail.com'
+EMAIL_HOST_PASSWORD = 'yphmcafmejkegnnt'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
