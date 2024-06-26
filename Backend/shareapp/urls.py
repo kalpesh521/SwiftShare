@@ -15,6 +15,8 @@ urlpatterns = [
     path('register/',UserRegistrationApiView.as_view(),name="register"),
     path('login/',UserLoginApiView.as_view(),name="login"),
     path('logout/',UserLogOutApiView.as_view(),name="logout"),
-    path('token/refresh/',TokenRefreshView.as_view(),name="refresh_token")
+    path('token/refresh/',TokenRefreshView.as_view(),name="refresh_token"),
+    path("enterroom",HomeView,name="home"),
+    path("<str:room_name>/<str:username>",RoomView,name="room"),
  ]
 

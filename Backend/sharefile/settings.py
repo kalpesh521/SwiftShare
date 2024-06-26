@@ -12,42 +12,32 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 from datetime import timedelta
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-# load_dotenv()
-# DEBUG = os.getenv('DEBUG')
-# SECRET_KEY = os.getenv('SECRET_KEY')
-# DATABASE_URL = os.getenv('DATABASE_URL')
 
+load_dotenv()
+ 
+SECRET_KEY = os.getenv('SECRET_KEY')
+ 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-91suihp&+qv4$ax9vk(loy=1=!n%m882(^kk=1rg-2nieraeh3'
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
-# Application definition
-
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
     'rest_framework',
     'shareapp',
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
- 
 ]
 
 MIDDLEWARE = [
@@ -81,35 +71,24 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'sharefile.wsgi.application'
-
+ASGI_APPLICATION = 'sharefile.asgi.application' 
 
 # Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-### CHANGES read secrets from .env
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres.kxwwfoqqrgwadforwdvd',
-        'PASSWORD': 'Kalpesh@@123',
-        'HOST': 'aws-0-ap-south-1.pooler.supabase.com',
-        'PORT': '5432',
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),
+        'PORT': os.getenv('DATABASE_PORT'),
     }
 }
 
-DEBUG =True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'kalpeshpawar7875@gmail.com'
-EMAIL_HOST_PASSWORD ='ieiu lbim onyc pdaz'
-EMAIL_PORT= 587
-EMAIL_USE_TLS = True
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
-
+ 
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -133,8 +112,7 @@ REST_FRAMEWORK = {
 }
 
 # Internationalization
-# https://docs.djangoproject.com/en/5.0/topics/i18n/
-
+ 
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -144,27 +122,21 @@ USE_I18N = True
 USE_TZ = True
 
 
+ 
+# Default primary key field type
+ 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ 
+ 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
 
- 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
- 
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
- 
 # STATIC_ROOT = 'staticfiles'
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR / "public/static",),   
+    os.path.join(BASE_DIR ,"public/static",),   
 ]
 
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'public/static') 
@@ -220,11 +192,15 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
 
+#  Email  Configurations
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-# EMAIL_HOST_USER = 'Team Swiftshare'
-EMAIL_HOST_USER = 'kalpeshpawar7875@gmail.com'
-EMAIL_HOST_PASSWORD = 'yphmcafmejkegnnt'
+EMAIL_HOST =  os.getenv('EMAIL_HOST')
+EMAIL_PORT =  os.getenv('EMAIL_PORT')
+EMAIL_HOST_USER =  os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+
+CHANNEL_LAYERS = {"default": {"BACKEND": "channels.layers.InMemoryChannelLayer"}}

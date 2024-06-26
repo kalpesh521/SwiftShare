@@ -59,3 +59,26 @@ class SignedUrl(models.Model):
     allowed_users = models.ManyToManyField(CustomUser, related_name="signed_urls")
     expiry_in = models.IntegerField(null=True, default=600)  # store time in seconds
     created_at = models.DateTimeField(auto_now_add=True)
+
+
+
+class Room(models.Model):
+    ROOM_CHOICES = [
+        ('room1-GI', 'General Inquiry'),
+        ('room2-TS', 'Technical Support'),
+        ('room3-SC', 'Security Concerns'),
+        ('room4-OTH', 'Other'),
+    ]
+    room_name = models.CharField(max_length=50,choices = ROOM_CHOICES)
+    
+    def __str__(self):
+        return self.room_name
+    
+class Message (models.Model):
+    room = models.ForeignKey(Room,on_delete=models.CASCADE)
+    sender = models.CharField(max_length=50)
+    message =models.TextField()
+    
+    def __str__(self):
+        return f"{str(self.room)} - {self.sender}"
+    

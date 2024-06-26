@@ -3,7 +3,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import { RingLoader } from 'react-spinners';
 import NavBar from "./components/NavBar/NavBar";
+import Chatbot from './components/chatbot/chatbot';
 import About from "./pages/About/About";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/SignUp";
@@ -12,9 +14,9 @@ import GetLink from "./pages/GetLink/GetLink";
 import Home from "./pages/Home/Home";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import Services from "./pages/Services/Services";
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [userstate, setUserState] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -34,7 +36,7 @@ function App() {
     <>
       {isLoading ? (
         <div style={loaderStyle}>
-          {/* <RingLoader color="white" size={120} /> */}
+          <RingLoader color="white" size={120} />
         </div>
       ) : (
         <>
@@ -62,7 +64,9 @@ function App() {
               <Route path="/services" element={<Services />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
+ 
             </Routes>
+            <Chatbot />  
           </BrowserRouter>
         </>
       )}

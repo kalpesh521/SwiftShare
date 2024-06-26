@@ -1,6 +1,6 @@
 from datetime import timedelta
 from email.utils import formataddr
-from django.shortcuts import render
+from django.shortcuts import render ,redirect
 from django.utils import timezone
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
@@ -11,7 +11,7 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.utils import timezone
 from pytz import timezone as pytz_timezone
-from shareapp.models import Contact, CustomUser, Folder, SignedUrl
+from shareapp.models import Contact, CustomUser, Folder, SignedUrl ,Room ,Message
 from shareapp.serializers import (
     ContactSerializer,
     CustomUserSerializer,
@@ -241,3 +241,25 @@ class HandleFileUpload(viewsets.ModelViewSet):
 class ContactView(viewsets.ModelViewSet):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
+    
+    
+def HomeView (request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        room = request.POST['room']
+        try :
+            existing_room = Room.objects.get(room_name__icontains = room)
+        except Room.DoesNotExist:
+            r = Room.objects.create(room_name = room)
+        return redirect("room",room_name = room , username = username)   
+    return render(request ,'login.html')
+
+def RoomView (request,room_name , username):
+    existing_room = Room.objects.get(room_name__icontains=room_name)
+    get_messages = Message.objects.filter(room=existing_room)
+    context = {
+        "messages": get_messages,
+        "user": username,
+        "room_name": existing_room.room_name,
+    }
+    return render(request ,'chat.html',context)
