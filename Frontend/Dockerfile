@@ -8,4 +8,6 @@ RUN npm install
 
 COPY . /swiftshare_frontend
 
+EXPOSE 3000
+
 CMD ["npm","start"]   

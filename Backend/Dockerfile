@@ -1,5 +1,4 @@
-
-FROM python:3.12
+FROM python:3.8-slim
 
 WORKDIR /swiftshare_backend
 
@@ -12,3 +11,4 @@ COPY . .
 EXPOSE 8000
 
 CMD ["python", "manage.py", "runserver"]
+ 

@@ -1,21 +1,18 @@
 import mimetypes
-
+import os
+from dotenv import load_dotenv
 from django.conf import settings
 from supabase import Client, create_client
 
-## read secrests from .env
-# supabase_url = 'https://pfjjfcvapkwqugplburm.supabase.co'
-# supabase_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBmampmY3ZhcGt3cXVncGxidXJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU1MDU4NTAsImV4cCI6MjAzMTA4MTg1MH0.9BoKWhD79j4SRbq_XlDF5UcfIuAcojiqULVL8AOicBU"
-# supabase_bucket = "test"
-# password = "irfhfNu95*%CiL8"
-# service_role_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBmampmY3ZhcGt3cXVncGxidXJtIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNTUwNTg1MCwiZXhwIjoyMDMxMDgxODUwfQ.Jn0Cd7eAUob0m0TzdjBg6uNbC9IQh2g-gxBqYqXV-5g"
+load_dotenv()
 
-supabase_url = 'https://kxwwfoqqrgwadforwdvd.supabase.co'
-supabase_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt4d3dmb3Fxcmd3YWRmb3J3ZHZkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU1MDMxMjIsImV4cCI6MjAzMTA3OTEyMn0.OeB2o5qcLoGoYyoXn8AEE2K3Euy54mvKMMH_fDyPUQQ"
-supabase_bucket = "testbucket"
+ 
+supabase_url = os.getenv('supabase_url')
+supabase_key =  os.getenv('supabase_key')
+supabase_bucket =  os.getenv('supabase_bucket')
+
 supabase: Client = create_client(supabase_url, supabase_key)
-
-
+ 
 def upload_file(file_name, folder_id, _zip=False):
     """
         Function to upload files to supabase
@@ -41,7 +38,6 @@ def upload_file(file_name, folder_id, _zip=False):
         print(response.json())
     return response.status_code == 200
 
-
 def download_file(folder_id):
     import os
     files = get_all_files(folder_id)
@@ -54,9 +50,8 @@ def download_file(folder_id):
             res = supabase.storage.from_(supabase_bucket).download(f"{supabase_bucket}/{folder_id}/{filename}")
             f.write(res)
 
-
 def create_signed_url(filepath, expiry_duration, bucket_name=supabase_bucket):
-    filepath = filepath.split(".")[0] # remove .zip
+    filepath = filepath.split(".")[0] 
     return supabase.storage.from_(bucket_name).create_signed_url(filepath, expiry_duration)
 
 

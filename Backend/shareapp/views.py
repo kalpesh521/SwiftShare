@@ -39,7 +39,6 @@ class UserRegistrationApiView(GenericAPIView):
                           "access": str(token.access_token)}
         return Response(data, status=status.HTTP_201_CREATED)
 
-
 class UserLoginApiView(GenericAPIView):
     permission_classes = (AllowAny,)
     serializer_class = UserLoginSerializer
@@ -49,7 +48,7 @@ class UserLoginApiView(GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data
-        serializer = CustomUserSerializer(user)
+        serializer = CustomUserSerializer(user) 
         token = RefreshToken.for_user(user)
         data = serializer.data
         data["token"] = {"refresh": str(token),
@@ -68,15 +67,6 @@ class UserLogOutApiView(GenericAPIView):
             return Response(status=status.HTTP_205_RESET_CONTENT)
         except Exception as e:
             return Response(status=status.HTTP_400_BAD_REQUEST)
-
-
-def home(request):
-    return render(request, 'home.html')
-
-
-def download(request, uid):
-    return render(request, 'download-file.html', context={'uid': uid})
-
 
 class HandleFileUpload(viewsets.ModelViewSet):
     serializer_class = FileListSerializer
@@ -101,61 +91,7 @@ class HandleFileUpload(viewsets.ModelViewSet):
                 'message': 'Something went wrong',
                 'data': e,
             })
-            
-    # @action(detail=True, methods=['get', 'post'])
-    # def get_sign_url(self, request, pk=None):
-    #     folder = Folder.objects.filter(pk=pk, user__email=self.request.user.email).first()
-    #     if not folder:
-    #         return Response({'detail': "Folder not found"}, status=status.HTTP_404_NOT_FOUND)
-    #     folder_id = folder.uid.hex
-    #     print(folder_id)
-    #     if request.method == "POST":
-    #         data = request.data
-    #         try:
-    #             recipient_email = data.get("email")
-    #             print(recipient_email)
-    #             if not recipient_email:
-    #                 return Response({'detail': "Recipient email is required"}, status=status.HTTP_400_BAD_REQUEST)
-
-    #             expiry_duration = data.get("expiry", 7 * 24 * 60 * 60)
-    #             signed_url_data = create_signed_url(filepath=f"{folder_id}/{folder_id}.zip", expiry_duration=expiry_duration)
-                
-    #             expiration_date_utc = timezone.now() + timedelta(seconds=expiry_duration)
-    #             ist = pytz_timezone('Asia/Kolkata')
-    #             expiration_date_ist = expiration_date_utc.astimezone(ist)
-    #             expiration_date_str = expiration_date_ist.strftime('%d-%m-%Y %H:%M:%S %Z')
-
-    #             # expiration_date = timezone.now() + timedelta(seconds=expiry_duration)
-    #             # expiration_date_str = expiration_date.strftime('%Y-%m-%d %H:%M:%S %Z')
-                
-    #             print(signed_url_data)
-    #             subject = "Unlock Files Now,Just Click Away"
-
-    #             from_email = formataddr(("SwiftShare", EMAIL_HOST_USER))
-
-    #             message = f"""
-    #             <html>
-    #                 <body>
-    #                     <p>Hello,</p>
-    #                     <p>You have received a link through SwiftShare. Please find the details below:</p>
-    #                     <p>To download the file, simply click on the link above. Please note that the link will expire on the specified date, so make sure to download the file before the expiration date.</p>
-    #                     <p><strong>File Link:</strong> <a href="{signed_url_data['signedURL']}">{signed_url_data['signedURL']}</a></p>
-    #                     <p><strong>Expiration Date:</strong> {expiration_date_str}</p>
-    #                     <p>If you have any questions or need assistance, feel free to contact us.</p>
-    #                     <p>Best regards,</p>
-    #                     <p><strong>Team SwiftShare</strong></p>
-    #                 </body>
-    #             </html>
-    #             """
-    #             send_mail(subject, '', from_email, [recipient_email], fail_silently=True, html_message=message)
-    #             print("Email Sent")
-    #         except Exception as ex:
-    #             return Response({'detail': 'Error in getting URL', 'error': str(ex)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-    #         if not signed_url_data.get('signedURL'):
-    #             return Response({'detail': 'Error in getting URL'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-    #         return Response({'detail': signed_url_data['signedURL']}, status=status.HTTP_200_OK)
+             
     @action(detail=True, methods=['get', 'post'])
     def get_sign_url(self, request, pk=None):
         folder = Folder.objects.filter(pk=pk, user__email=self.request.user.email).first()
@@ -229,7 +165,6 @@ class HandleFileUpload(viewsets.ModelViewSet):
         data = {"detail": "Access given successfully", "authorised_users": [], "not_found_users": []}
         for user_email in authorised_users:
             user = CustomUser.objects.filter(email=user_email).first()
-            # return the both added and not found users
             if user:
                 data["authorised_users"].append(user.email)
                 signed_url.allowed_users.add(user)
@@ -237,13 +172,11 @@ class HandleFileUpload(viewsets.ModelViewSet):
                 data["not_found_users"].append(user_email)
         return Response(data, status=status.HTTP_200_OK)
 
-
 class ContactView(viewsets.ModelViewSet):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
-    
-    
-def HomeView (request):
+     
+def HomeView (request): 
     if request.method == 'POST':
         username = request.POST['username']
         room = request.POST['room']

@@ -1,18 +1,15 @@
 from django.contrib.auth import authenticate
 from rest_framework import serializers
 from rest_framework.serializers import ValidationError
-
 from shareapp.models import CustomUser, Files, Folder, Contact
 from shareapp.supabase_utils import upload_file
 from shareapp.utils import remove_local_folder
 from shareapp.utils import zip_files
 
-
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ("id", "username", "email")
-
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
     password1 = serializers.CharField(write_only=True)
@@ -49,15 +46,12 @@ class UserLoginSerializer(serializers.Serializer):
         raise serializers.ValidationError("Incorrect User")
 
 
-# Serializer for the Files model
 class FileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Files
         fields = '__all__'
 
-    # Serializer for handling file uploads and zipping them into a folder
-
-
+ 
 class FileListSerializer(serializers.Serializer):
     files = serializers.ListField(
         child=serializers.FileField(max_length=100000, allow_empty_file=False, use_url=False)

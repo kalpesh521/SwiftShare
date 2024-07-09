@@ -1,7 +1,6 @@
 import os
 import shutil
 from io import BytesIO
-
 from django.conf import settings
 
 
